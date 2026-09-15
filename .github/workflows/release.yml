@@ -205,6 +205,8 @@ jobs:
             os: windows-latest
           - rid: linux-x64
             os: ubuntu-latest
+          - rid: linux-arm64
+            os: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -274,6 +276,7 @@ jobs:
           fi
 
       - name: Smoke test --version (no .NET SDK needed by the self-contained binary)
+        if: ${{ matrix.rid != 'linux-arm64' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -285,6 +288,14 @@ jobs:
             "intent-cli ${VERSION}"|"intent-cli ${VERSION}-"*|"intent-cli ${VERSION}+"*) ;;
             *) echo "binary version '${FIRST_LINE}' does not match release version '${VERSION}'" >&2; exit 1 ;;
           esac
+
+      - name: Verify binary architecture (ELF aarch64)
+        if: ${{ matrix.rid == 'linux-arm64' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          file "${{ steps.stage.outputs.bin }}" | grep -q "ELF 64-bit LSB.*ARM aarch64"
+          echo "Binary verified as linux-arm64"
 
       - name: Archive + checksum
         id: pack
@@ -389,10 +400,11 @@ jobs:
         run: |
           set -euo pipefail
           VERSION="${{ steps.ver.outputs.version }}"
-          for RID in osx-arm64 linux-x64 win-x64; do
+          for RID in osx-arm64 linux-x64 linux-arm64 win-x64; do
             case "${RID}" in
               osx-arm64) ARCHIVE="intent-cli-${VERSION}-osx-arm64.*"; BINARY="intent-cli" ;;
               linux-x64) ARCHIVE="intent-cli-${VERSION}-linux-x64.*"; BINARY="intent-cli" ;;
+              linux-arm64) ARCHIVE="intent-cli-${VERSION}-linux-arm64.*"; BINARY="intent-cli" ;;
               win-x64) ARCHIVE="intent-cli-${VERSION}-win-x64.*"; BINARY="intent-cli.exe" ;;
             esac
             ASSET="$(find .artifacts/release-assets -type f -name "${ARCHIVE}" ! -name '*.sha256' -print -quit)"
@@ -491,6 +503,9 @@ jobs:
           publish_package \
             .artifacts/npm-tarballs/j-tech-japan-intent-cli-linux-x64-*.tgz \
             "@j-tech-japan/intent-cli-linux-x64"
+          publish_package \
+            .artifacts/npm-tarballs/j-tech-japan-intent-cli-linux-arm64-*.tgz \
+            "@j-tech-japan/intent-cli-linux-arm64"
           publish_package \
             .artifacts/npm-tarballs/j-tech-japan-intent-cli-win32-x64-*.tgz \
             "@j-tech-japan/intent-cli-win32-x64"

@@ -23,6 +23,13 @@ const platforms = [
     npmPackage: '@j-tech-japan/intent-cli-linux-x64',
   },
   {
+    rid: 'linux-arm64',
+    directory: 'linux-arm64',
+    template: 'platforms/linux-arm64/package.json',
+    binary: 'intent-cli',
+    npmPackage: '@j-tech-japan/intent-cli-linux-arm64',
+  },
+  {
     rid: 'win-x64',
     directory: 'win32-x64',
     template: 'platforms/win32-x64/package.json',

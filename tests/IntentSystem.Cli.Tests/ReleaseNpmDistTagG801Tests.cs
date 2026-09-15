@@ -39,6 +39,7 @@ public sealed class ReleaseNpmDistTagG801Tests
         {
             "@j-tech-japan/intent-cli-darwin-arm64",
             "@j-tech-japan/intent-cli-linux-x64",
+            "@j-tech-japan/intent-cli-linux-arm64",
             "@j-tech-japan/intent-cli-win32-x64",
             "intent-system",
         };
@@ -50,7 +51,7 @@ public sealed class ReleaseNpmDistTagG801Tests
         var callCount = Regex.Matches(
             publishStep,
             @"(?m)^\s*publish_package \\\s*$").Count;
-        Assert.Equal(4, callCount);
+        Assert.Equal(5, callCount);
         var callNames = Regex.Matches(
                 publishStep,
                 @"(?ms)^\s*publish_package \\\s*\n\s+[^\r\n]+\n\s+""(?<name>[^""]+)""")

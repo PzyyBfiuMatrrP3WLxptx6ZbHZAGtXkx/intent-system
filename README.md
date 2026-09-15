@@ -59,6 +59,13 @@ guidance, checksums, release gating, and coexistence with the .NET tool.
 > for self-contained binaries. Need the preview channel? See the
 > **[developer reference](https://github.com/J-Tech-Japan/intent-system/blob/main/docs/en/09-developer-reference.md#preview-install)**.
 
+> **Linux ARM64 (aarch64) users:** Self-contained `intent-cli` binaries for
+> `linux-arm64` are published as workflow artifacts from the
+> [GitHub Releases](https://github.com/J-Tech-Japan/intent-system/releases).
+> These binaries bundle the .NET runtime and run without any .NET SDK or
+> runtime installed on the target machine. Download the `intent-cli-<version>-linux-arm64.tar.gz`
+> artifact, extract, and run `./intent-cli --version` to verify.
+
 ### 2. Verify
 
 ```bash

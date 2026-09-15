@@ -10,6 +10,7 @@ const provenanceRepositoryUrl = 'https://github.com/J-Tech-Japan/intent-system';
 const platforms = [
   { directory: 'darwin-arm64', name: '@j-tech-japan/intent-cli-darwin-arm64', os: 'darwin', cpu: 'arm64', rid: 'osx-arm64' },
   { directory: 'linux-x64', name: '@j-tech-japan/intent-cli-linux-x64', os: 'linux', cpu: 'x64', rid: 'linux-x64' },
+  { directory: 'linux-arm64', name: '@j-tech-japan/intent-cli-linux-arm64', os: 'linux', cpu: 'arm64', rid: 'linux-arm64' },
   { directory: 'win32-x64', name: '@j-tech-japan/intent-cli-win32-x64', os: 'win32', cpu: 'x64', rid: 'win-x64' },
 ];
 

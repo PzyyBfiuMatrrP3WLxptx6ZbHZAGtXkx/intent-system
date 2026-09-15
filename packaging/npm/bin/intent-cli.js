@@ -9,6 +9,7 @@ const { spawnSync } = require('node:child_process');
 const platformPackage = new Map([
   ['darwin:arm64', '@j-tech-japan/intent-cli-darwin-arm64'],
   ['linux:x64', '@j-tech-japan/intent-cli-linux-x64'],
+  ['linux:arm64', '@j-tech-japan/intent-cli-linux-arm64'],
   ['win32:x64', '@j-tech-japan/intent-cli-win32-x64'],
 ]);
 

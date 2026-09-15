@@ -1,7 +1,7 @@
 {
-  "name": "@j-tech-japan/intent-cli-linux-x64",
+  "name": "@j-tech-japan/intent-cli-linux-arm64",
   "version": "0.0.0-dev",
-  "description": "Self-contained intent-cli binary for Linux x64.",
+  "description": "Self-contained intent-cli binary for Linux ARM64.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
     "linux"
   ],
   "cpu": [
-    "x64"
+    "arm64"
   ],
   "files": [
     "bin",
@@ -21,7 +21,7 @@
     "intent-cli": "bin/intent-cli"
   },
   "intentCli": {
-    "platform": "linux-x64",
+    "platform": "linux-arm64",
     "version": "0.0.0-dev",
     "binary": "bin/intent-cli",
     "binarySha256": "__BINARY_SHA256__",

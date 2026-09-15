@@ -17,6 +17,9 @@
     "bin",
     "README.md"
   ],
+  "bin": {
+    "intent-cli": "bin/intent-cli.exe"
+  },
   "intentCli": {
     "platform": "win-x64",
     "version": "0.0.0-dev",
